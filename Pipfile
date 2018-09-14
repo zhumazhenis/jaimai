@@ -2,4 +2,4 @@
 python_version = "3.6.6"
 
 [packages]
-python-telegram-bot = "11.1.0"
+python-telegram-bot = "*"
