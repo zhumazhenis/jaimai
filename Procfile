@@ -1,1 +1,1 @@
-bot: python3 timerbot.py
+web: python3 timerbot.py
