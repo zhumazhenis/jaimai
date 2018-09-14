@@ -1,1 +1,1 @@
-bot: python timerbot.py
+bot: python3 timerbot.py
