@@ -1,1 +1,1 @@
-web: gunicorn timerbot:app
+web: python3 timerbot.py
