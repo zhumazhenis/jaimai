@@ -18,7 +18,6 @@ bot.
 from telegram.ext import Updater, CommandHandler, MessageHandler
 import logging
 from telegram.ext.filters import Filters, BaseFilter
-import json
 import cv2
 import urllib
 import urllib.request
