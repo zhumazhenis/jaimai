@@ -3,3 +3,4 @@ python_version = "3.6.6"
 
 [packages]
 python-telegram-bot = "*"
+opencv-python = "*"

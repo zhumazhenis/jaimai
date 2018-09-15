@@ -15,8 +15,14 @@ Press Ctrl-C on the command line or send a signal to the process to stop the
 bot.
 """
 
-from telegram.ext import Updater, CommandHandler
+from telegram.ext import Updater, CommandHandler, MessageHandler
 import logging
+from telegram.ext.filters import Filters, BaseFilter
+import json
+import cv2
+import urllib
+import urllib.request
+import numpy as np
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -75,9 +81,39 @@ def error(bot, update, error):
     logger.warning('Update "%s" caused error "%s"', update, error)
 
 
+def getImage(bot, update, user_data, chat_data):
+	updates = update
+	print('\n\n\n\n')
+	print(update.message.photo[0].file_id)
+	bot.send_message(chat_id=update.message.chat_id, text=str(update.message.photo))
+	for obj in update.message.photo:
+		bot.send_photo(chat_id=update.message.chat_id, photo=obj.file_id)
+		break
+
+	# 'https://telegram.org/img/t_logo.png'
+	print('\n\n\n suret \n')
+	imgPath = update.message.photo[0].get_file().file_path
+	req = urllib.request.urlopen(str(imgPath))
+	arr = np.asarray(bytearray(req.read()), dtype=np.uint8)
+	img = cv2.imdecode(arr, -1) # 'Load it as it is'
+
+	
+	bot.send_photo(chat_id=297542068, photo=update.message.photo[0].file_id)
+	print('\n', update.message.chat_id)
+	
+
+	# print([u.message.photo for u in updates if u.message.photo])
+	# print(updates[0].message)
+	# print('Kazakh\n\n\n\n')
+	# print(updates)
+	# print('\n\n\n\n')
+	# print(user_data)
+	# print(chat_data)
+
 def main():
     """Run bot."""
     updater = Updater("590657376:AAGPekOrdaSNSjJys5ouPEopUsSKaChYKBw")
+
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
@@ -90,6 +126,20 @@ def main():
                                   pass_job_queue=True,
                                   pass_chat_data=True))
     dp.add_handler(CommandHandler("unset", unset, pass_chat_data=True))
+    dp.add_handler((CommandHandler("img", getImage)))
+
+    mh = MessageHandler(
+    	filters=Filters.photo, 
+    	callback=getImage, 
+    	allow_edited=True, 
+    	pass_update_queue=False, 
+    	pass_job_queue=False, 
+    	pass_user_data=True, 
+    	pass_chat_data=True, 
+    	message_updates=True, 
+    	channel_post_updates=True, 
+    	edited_updates=True)
+    dp.add_handler(mh)
 
     # log all errors
     dp.add_error_handler(error)
