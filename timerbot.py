@@ -130,7 +130,6 @@ def main():
     mh = MessageHandler(
     	filters=Filters.photo, 
     	callback=getImage, 
-    	allow_edited=True, 
     	pass_update_queue=False, 
     	pass_job_queue=False, 
     	pass_user_data=True, 
