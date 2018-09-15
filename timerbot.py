@@ -51,6 +51,7 @@ def set_timer(bot, update, args, job_queue, chat_data):
         chat_data['job'] = job
 
         update.message.reply_text('Timer successfully set!')
+        print('Timer set by ' + str(args[0]))
 
     except (IndexError, ValueError):
         update.message.reply_text('Usage: /set <seconds>')
