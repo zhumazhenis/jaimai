@@ -18,9 +18,9 @@ bot.
 from telegram.ext import Updater, CommandHandler, MessageHandler
 import logging
 from telegram.ext.filters import Filters, BaseFilter
-import cv2
-import urllib
-import urllib.request
+# import cv2
+# import urllib
+# import urllib.request
 import numpy as np
 
 # Enable logging
@@ -90,15 +90,15 @@ def getImage(bot, update, user_data, chat_data):
 		break
 
 	# 'https://telegram.org/img/t_logo.png'
-	print('\n\n\n suret \n')
-	imgPath = update.message.photo[0].get_file().file_path
-	req = urllib.request.urlopen(str(imgPath))
-	arr = np.asarray(bytearray(req.read()), dtype=np.uint8)
-	img = cv2.imdecode(arr, -1) # 'Load it as it is'
+	# print('\n\n\n suret \n')
+	# imgPath = update.message.photo[0].get_file().file_path
+	# req = urllib.request.urlopen(str(imgPath))
+	# arr = np.asarray(bytearray(req.read()), dtype=np.uint8)
+	# img = cv2.imdecode(arr, -1) # 'Load it as it is'
 
 	
-	bot.send_photo(chat_id=297542068, photo=update.message.photo[0].file_id)
-	print('\n', update.message.chat_id)
+	# bot.send_photo(chat_id=297542068, photo=update.message.photo[0].file_id)
+	# print('\n', update.message.chat_id)
 	
 
 	# print([u.message.photo for u in updates if u.message.photo])
@@ -153,3 +153,11 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+
+# opencv-python = "*"
+# numpy = "*"
+# cmake = "*"
+# dlib = "*"
+# face_recognition = "*"
