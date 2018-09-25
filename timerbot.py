@@ -85,6 +85,7 @@ def getImage(bot, update, user_data, chat_data):
 	print('\n\n\n\n')
 	print(update.message.photo[0].file_id)
 	bot.send_message(chat_id=update.message.chat_id, text=str(update.message.photo))
+    
 	for obj in update.message.photo:
 		bot.send_photo(chat_id=update.message.chat_id, photo=obj.file_id)
 		break
