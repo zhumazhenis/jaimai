@@ -22,6 +22,7 @@ import cv2
 # import urllib
 # import urllib.request
 import numpy
+print("beta1 branch")
 import numpy as np
 
 # Enable logging
