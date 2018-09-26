@@ -21,6 +21,7 @@ from telegram.ext.filters import Filters, BaseFilter
 import cv2
 # import urllib
 # import urllib.request
+import numpy
 import numpy as np
 
 # Enable logging
